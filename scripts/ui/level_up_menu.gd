@@ -174,7 +174,7 @@ func _create_card_button(data: Dictionary, card_index: int = 0) -> Button:
 	var t_label: Label = Label.new()
 	t_label.text = data["title"]
 	t_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	t_label.theme_override_font_sizes/font_size = 10
+	t_label.add_theme_font_size_override("font_size", 10)
 	t_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(t_label)
 	
@@ -182,8 +182,8 @@ func _create_card_button(data: Dictionary, card_index: int = 0) -> Button:
 	d_label.text = data["desc"]
 	d_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	d_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	d_label.theme_override_font_sizes/font_size = 8
-	d_label.theme_override_colors/font_color = Color(0.75, 0.8, 0.9)
+	d_label.add_theme_font_size_override("font_size", 8)
+	d_label.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
 	d_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(d_label)
 	

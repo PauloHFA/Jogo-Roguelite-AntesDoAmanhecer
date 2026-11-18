@@ -15,12 +15,12 @@ extends Control
 @onready var sim_button: Button = $VBoxContainer/BottomRow/SimButton
 @onready var back_button: Button = $VBoxContainer/BottomRow/BackButton
 
-var settings: SettingsManager = null
+var settings: SettingsManagerNode = null
 
 func _ready() -> void:
 	var s_nodes: Array[Node] = get_tree().get_nodes_in_group("settings")
 	if s_nodes.size() > 0:
-		settings = s_nodes[0] as SettingsManager
+		settings = s_nodes[0] as SettingsManagerNode
 		
 	_sync_ui_with_settings()
 	

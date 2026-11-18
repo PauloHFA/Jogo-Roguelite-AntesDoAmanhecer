@@ -13,7 +13,7 @@ var camera_ref: Camera2D = null
 var vignette_rect: ColorRect = null
 var vignette_alpha: float = 0.0
 
-@onready var settings: SettingsManager = null
+@onready var settings: SettingsManagerNode = null
 
 func _ready() -> void:
 	add_to_group("juice")
@@ -26,7 +26,7 @@ func _ready() -> void:
 		
 	var s_nodes: Array[Node] = get_tree().get_nodes_in_group("settings")
 	if s_nodes.size() > 0:
-		settings = s_nodes[0] as SettingsManager
+		settings = s_nodes[0] as SettingsManagerNode
 
 func _process(delta: float) -> void:
 	# Atualiza decaimento de trauma e tremor de tela

@@ -60,7 +60,7 @@ func _fire() -> void:
 		
 	var audio_mgrs: Array[Node] = get_tree().get_nodes_in_group("audio")
 	if audio_mgrs.size() > 0:
-		var audio: AudioManager = audio_mgrs[0] as AudioManager
+		var audio: AudioManagerNode = audio_mgrs[0] as AudioManagerNode
 		audio.play_sfx_gun()
 		
 	var origin: Vector2 = global_position

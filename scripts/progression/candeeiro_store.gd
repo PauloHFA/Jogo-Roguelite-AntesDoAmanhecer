@@ -89,21 +89,21 @@ func _populate_upgrade_items() -> void:
 		
 		var title_lbl: Label = Label.new()
 		title_lbl.text = "%s (Nível %d / %d)" % [def["name"], cur_lvl, max_lvl]
-		title_lbl.theme_override_font_sizes/font_size = 11
-		title_lbl.theme_override_colors/font_color = Color(1.0, 0.9, 0.4)
+		title_lbl.add_theme_font_size_override("font_size", 11)
+		title_lbl.add_theme_color_override("font_color", Color(1.0, 0.9, 0.4))
 		info_vbox.add_child(title_lbl)
 		
 		var desc_lbl: Label = Label.new()
 		desc_lbl.text = def["desc"]
-		desc_lbl.theme_override_font_sizes/font_size = 9
-		desc_lbl.theme_override_colors/font_color = Color(0.7, 0.75, 0.85)
+		desc_lbl.add_theme_font_size_override("font_size", 9)
+		desc_lbl.add_theme_color_override("font_color", Color(0.7, 0.75, 0.85))
 		info_vbox.add_child(desc_lbl)
 		
 		row.add_child(info_vbox)
 		
 		var buy_btn: Button = Button.new()
 		buy_btn.custom_minimum_size = Vector2(100, 28)
-		buy_btn.theme_override_font_sizes/font_size = 10
+		buy_btn.add_theme_font_size_override("font_size", 10)
 		
 		if cur_lvl >= max_lvl:
 			buy_btn.text = "MAX"

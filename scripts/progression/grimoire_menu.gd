@@ -64,37 +64,37 @@ func _populate_entries() -> void:
 		row.custom_minimum_size = Vector2(0, 34)
 		
 		var hbox: HBoxContainer = HBoxContainer.new()
-		hbox.theme_override_constants/separation = 12
+		hbox.add_theme_constant_override("separation", 12)
 		
 		# Categoria
 		var cat_lbl: Label = Label.new()
 		cat_lbl.custom_minimum_size = Vector2(90, 0)
 		cat_lbl.text = "[%s]" % entry["category"]
-		cat_lbl.theme_override_font_sizes/font_size = 9
-		cat_lbl.theme_override_colors/font_color = Color(0.4, 0.8, 1.0)
+		cat_lbl.add_theme_font_size_override("font_size", 9)
+		cat_lbl.add_theme_color_override("font_color", Color(0.4, 0.8, 1.0))
 		hbox.add_child(cat_lbl)
 		
 		# Nome
 		var name_lbl: Label = Label.new()
 		name_lbl.custom_minimum_size = Vector2(140, 0)
-		name_lbl.theme_override_font_sizes/font_size = 10
+		name_lbl.add_theme_font_size_override("font_size", 10)
 		
 		# Descrição
 		var desc_lbl: Label = Label.new()
 		desc_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		desc_lbl.theme_override_font_sizes/font_size = 9
+		desc_lbl.add_theme_font_size_override("font_size", 9)
 		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		
 		if is_unlocked:
 			name_lbl.text = entry["name"]
-			name_lbl.theme_override_colors/font_color = Color(1.0, 0.9, 0.4)
+			name_lbl.add_theme_color_override("font_color", Color(1.0, 0.9, 0.4))
 			desc_lbl.text = entry["desc"]
-			desc_lbl.theme_override_colors/font_color = Color(0.8, 0.85, 0.9)
+			desc_lbl.add_theme_color_override("font_color", Color(0.8, 0.85, 0.9))
 		else:
 			name_lbl.text = "??? (Não Revelado)"
-			name_lbl.theme_override_colors/font_color = Color(0.5, 0.5, 0.5)
+			name_lbl.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5))
 			desc_lbl.text = "Descubra e experimente durante as noites para revelar sua história."
-			desc_lbl.theme_override_colors/font_color = Color(0.4, 0.45, 0.5)
+			desc_lbl.add_theme_color_override("font_color", Color(0.4, 0.45, 0.5))
 			
 		hbox.add_child(name_lbl)
 		hbox.add_child(desc_lbl)

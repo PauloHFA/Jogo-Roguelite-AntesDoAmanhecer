@@ -1,4 +1,4 @@
-class_name SettingsManager
+class_name SettingsManagerNode
 extends Node
 
 ## Gerenciador de Configurações e Acessibilidade (RNF-05, CA-15, Seção 10.3)

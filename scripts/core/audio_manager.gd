@@ -1,4 +1,4 @@
-class_name AudioManager
+class_name AudioManagerNode
 extends Node
 
 ## Gerenciador Central de Áudio e Sintetizador Procedural (Seção 10.4)

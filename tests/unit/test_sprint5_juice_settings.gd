@@ -37,7 +37,7 @@ static func test_trauma_decay() -> Dictionary:
 	}
 
 static func test_accessibility_disable_shake_ca15() -> Dictionary:
-	var settings: SettingsManager = SettingsManager.new()
+	var settings: SettingsManagerNode = SettingsManagerNode.new()
 	settings.set_screen_shake(0.0) # Desativa tremor (CA-15)
 	
 	var initial_trauma: float = 0.0
@@ -53,7 +53,7 @@ static func test_accessibility_disable_shake_ca15() -> Dictionary:
 	}
 
 static func test_accessibility_hit_stop_toggle() -> Dictionary:
-	var settings: SettingsManager = SettingsManager.new()
+	var settings: SettingsManagerNode = SettingsManagerNode.new()
 	settings.set_hit_stop(false)
 	
 	var passed: bool = (settings.hit_stop_enabled == false)

@@ -2,27 +2,42 @@ name: "Antes do Amanhecer - Godot 4 CI"
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main", "master"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main", "master"]
 
 jobs:
   unit-tests:
     name: "Executar 14 Suítes de Testes Unitários (Headless)"
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.3
 
     steps:
       - name: "Checkout do Repositório"
         uses: actions/checkout@v4
 
-      - name: "Verificar Versão do Godot"
-        run: godot --version
+      - name: "Instalar Godot 4.7.2 (Headless)"
+        run: |
+          curl -sSL "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o godot.zip
+          unzip -q godot.zip
+          sudo mv Godot_v4.7.2-stable_linux.x86_64 /usr/local/bin/godot
+          sudo chmod +x /usr/local/bin/godot
+          godot --version
 
-      - name: "Importar Recursos do Projeto"
+      - name: "Importar Recursos e Registrar Classes Globais"
         run: godot --headless --editor --quit
 
-      - name: "Executar Suíte de Testes Automatizados (CA-01 a CA-16)"
+      - name: "Executar 14 Suítes de Testes Automatizados (CA-01 a CA-16)"
         run: |
-          godot --headless -s tests/test_runner.gd
+          godot --headless tests/test_runner.tscn 2>&1 | tee test_out.log
+          if grep -E "SCRIPT ERROR|Parse Error|Failed to load script|\[FAIL\]" test_out.log; then
+            echo "Falha ou erro de script detectado na suíte de testes!"
+            exit 1
+          fi
+
+      - name: "Validar Cold-Boot da Cena Principal"
+        run: |
+          godot --headless --quit-after 10 2>&1 | tee boot_out.log
+          if grep -E "SCRIPT ERROR|Parse Error|Failed to load script" boot_out.log; then
+            echo "Erro de carregamento detectado no boot da cena principal!"
+            exit 1
+          fi

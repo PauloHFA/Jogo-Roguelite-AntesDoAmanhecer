@@ -97,7 +97,7 @@ static func simulate_match(
 		
 		# 1. Escalonamento da horda pelo GDD (Seção 8.2)
 		var hp_scaling: float = 1.0 + (0.08 * current_minute) + (0.003 * current_minute * current_minute)
-		var horde_threat: float = (15.0 + (current_minute * 12.0) + (current_minute * current_minute * 0.4))
+		var horde_threat: float = (8.0 + (current_minute * 9.0) + (current_minute * current_minute * 0.25))
 		
 		# 2. Cálculo do DPS do Jogador
 		var total_player_dps: float = 0.0
@@ -116,7 +116,7 @@ static func simulate_match(
 		var evasion: float = clampf((speed - 60.0) / 160.0, 0.15, 0.65)
 		
 		# Se o DPS do jogador superar a ameaça, ele mata os monstros e sofre pouco dano
-		var threat_deficit: float = horde_threat - (total_player_dps * 0.45)
+		var threat_deficit: float = horde_threat - (total_player_dps * 0.75)
 		if threat_deficit > 0.0:
 			var incoming_dmg: float = threat_deficit * (1.0 - armor_pct) * (1.0 - evasion) * tick_step
 			current_hp -= incoming_dmg

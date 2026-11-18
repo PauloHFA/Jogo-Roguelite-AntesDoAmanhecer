@@ -230,4 +230,9 @@ func run_all_suites() -> void:
 		output_label.text = "\n".join(log_lines)
 		
 	# Também envia para o console padrão do Godot
+	for line in log_lines:
+		if "[FAIL]" in line:
+			print(line)
 	print(summary_text)
+	if DisplayServer.get_name() == "headless":
+		get_tree().quit(1 if failed_tests > 0 else 0)

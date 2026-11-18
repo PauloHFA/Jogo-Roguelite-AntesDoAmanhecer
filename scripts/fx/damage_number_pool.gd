@@ -24,9 +24,9 @@ func _initialize_pool() -> void:
 	for i in range(pool_size):
 		var lbl: Label = Label.new()
 		lbl.visible = false
-		lbl.theme_override_font_sizes/font_size = 10
-		lbl.theme_override_colors/font_outline_color = Color.BLACK
-		lbl.theme_override_constants/outline_size = 2
+		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_color_override("font_outline_color", Color.BLACK)
+		lbl.add_theme_constant_override("outline_size", 2)
 		add_child(lbl)
 		free_labels.append(lbl)
 
@@ -34,7 +34,7 @@ func spawn_number(pos: Vector2, amount: float, is_crit: bool = false) -> void:
 	# Verifica se as configurações permitem
 	var s_nodes: Array[Node] = get_tree().get_nodes_in_group("settings")
 	if s_nodes.size() > 0:
-		var s: SettingsManager = s_nodes[0] as SettingsManager
+		var s: SettingsManagerNode = s_nodes[0] as SettingsManagerNode
 		if not s.damage_numbers_enabled:
 			return
 			
@@ -47,10 +47,10 @@ func spawn_number(pos: Vector2, amount: float, is_crit: bool = false) -> void:
 	
 	if is_crit:
 		lbl.modulate = Color(1.0, 0.3, 0.3, 1.0) # Vermelho de crítico
-		lbl.theme_override_font_sizes/font_size = 12
+		lbl.add_theme_font_size_override("font_size", 12)
 	else:
 		lbl.modulate = Color(1.0, 0.9, 0.4, 1.0) # Amarelo ouro
-		lbl.theme_override_font_sizes/font_size = 10
+		lbl.add_theme_font_size_override("font_size", 10)
 		
 	var active: ActiveNumber = ActiveNumber.new()
 	active.label = lbl

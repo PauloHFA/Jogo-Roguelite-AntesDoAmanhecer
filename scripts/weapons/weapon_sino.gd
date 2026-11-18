@@ -41,7 +41,7 @@ func _trigger_bell_toll() -> void:
 	
 	var audio_mgrs: Array[Node] = get_tree().get_nodes_in_group("audio")
 	if audio_mgrs.size() > 0:
-		var audio: AudioManager = audio_mgrs[0] as AudioManager
+		var audio: AudioManagerNode = audio_mgrs[0] as AudioManagerNode
 		audio.play_sfx_pitch(audio.sfx_fanfare, 0.72)
 	
 	var juice_nodes: Array[Node] = get_tree().get_nodes_in_group("juice")

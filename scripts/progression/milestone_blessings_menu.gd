@@ -93,7 +93,7 @@ func _populate_blessings() -> void:
 		var t_lbl: Label = Label.new()
 		t_lbl.text = b["title"]
 		t_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		t_lbl.theme_override_font_sizes/font_size = 11
+		t_lbl.add_theme_font_size_override("font_size", 11)
 		t_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		vbox.add_child(t_lbl)
 		
@@ -101,8 +101,8 @@ func _populate_blessings() -> void:
 		d_lbl.text = b["desc"]
 		d_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		d_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		d_lbl.theme_override_font_sizes/font_size = 9
-		d_lbl.theme_override_colors/font_color = Color(0.75, 0.8, 0.9)
+		d_lbl.add_theme_font_size_override("font_size", 9)
+		d_lbl.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
 		d_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		vbox.add_child(d_lbl)
 		

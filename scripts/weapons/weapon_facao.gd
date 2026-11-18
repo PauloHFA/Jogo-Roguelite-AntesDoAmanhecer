@@ -52,7 +52,7 @@ func _execute_slash() -> void:
 		
 	var audio_mgrs: Array[Node] = get_tree().get_nodes_in_group("audio")
 	if audio_mgrs.size() > 0:
-		var audio: AudioManager = audio_mgrs[0] as AudioManager
+		var audio: AudioManagerNode = audio_mgrs[0] as AudioManagerNode
 		audio.play_sfx_slash()
 	
 	var swarm_nodes: Array[Node] = get_tree().get_nodes_in_group("swarm_manager")
